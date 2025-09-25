@@ -3,43 +3,57 @@ body {
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
 }
 
 ::-webkit-scrollbar {
     width: 2px;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #888;
+::-webkit-scrollbar-track {
+    background: #2c2c54;
     border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #3a7bd5, #00d2ff);
 }
 
 /* App Container */
 .app-container {
     display: flex;
     height: 100vh;
+    background: #0f0f23;
 }
 
 /* Sidebar Styles */
 .sidebar {
-    background-color: #f5f5f5;
-    border-right: 1px solid #ddd;
+    background: linear-gradient(180deg, #2c2c54 0%, #1a1a2e 100%);
+    border-right: 1px solid #40407a;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .sidebar-header {
     padding: 15px;
-    border-bottom: 1px solid #ddd;
-    background-color: #e9ecef;
+    border-bottom: 1px solid #40407a;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .sidebar-header h3 {
     margin: 0;
-    color: #333;
+    color: #ffffff;
     font-size: 16px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .sidebar-nav {
@@ -50,20 +64,41 @@ body {
 .sidebar-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     width: 100%;
-    padding: 12px 10px;
+    padding: 10px 10px;
     border: none;
-    background: none;
-    color: #333;
+    background: transparent;
+    color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
     font-size: 14px;
     text-align: left;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
 }
 
 .sidebar-btn:hover {
-    background-color: #ddd;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.sidebar-btn:hover::before {
+    left: 100%;
 }
 
 
@@ -71,6 +106,7 @@ body {
 .main-content {
     flex: 1;
     overflow-y: auto;
+    background: #0f0f23;
 }
 
 .container {
@@ -82,82 +118,195 @@ body {
 }
 
 .header {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #40407a;
+    background: linear-gradient(135deg, #2c2c54 0%, #1a1a2e 100%);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+    margin: 0 0 20px 0;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 50%, #00b09b 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 8px rgba(0, 210, 255, 0.3);
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .header h2 {
     margin: 0px;
-    color: #1a73e8;
+    color: #00d2ff;
 }
 
 .actions {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 button {
-    padding: 8px 16px;
+    padding: 12px 24px;
     border: none;
-    background-color: #1a73e8;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    border-radius: 4px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
     font-size: 14px;
+    font-weight: 600;
     flex: 1;
-    min-width: 120px;
+    min-width: 140px;
+    max-width: 200px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 button:hover {
-    background-color: #1558b0;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* Specific button styles */
+#summarizeBtn {
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+
+#summarizeBtn:hover {
+    background: linear-gradient(135deg, #3a7bd5 0%, #00d2ff 100%);
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6);
+}
+
+#citationsBtn {
+    background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+    box-shadow: 0 4px 15px rgba(0, 176, 155, 0.4);
+}
+
+#citationsBtn:hover {
+    background: linear-gradient(135deg, #96c93d 0%, #00b09b 100%);
+    box-shadow: 0 8px 25px rgba(0, 176, 155, 0.6);
 }
 
 .notes textarea {
     width: 100%;
     height: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 15px;
+    border: 2px solid #40407a;
+    border-radius: 12px;
     resize: vertical;
     font-size: 14px;
     box-sizing: border-box;
+    background: #2c2c54;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.notes textarea:focus {
+    outline: none;
+    border-color: #00d2ff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+    background: #363663;
+}
+
+.notes textarea::placeholder {
+    color: #a0a0c4;
 }
 
 #results {
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
+    padding: 20px;
+    background: linear-gradient(135deg, #2c2c54 0%, #1a1a2e 100%);
+    border-radius: 12px;
     margin-top: 20px;
+    border: 1px solid #40407a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .result-item {
-    padding: 15px;
-    background: white;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background: linear-gradient(135deg, #363663 0%, #2c2c54 100%);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #40407a;
+    transition: all 0.3s ease;
+}
+
+.result-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 210, 255, 0.2);
+    border-color: #00d2ff;
 }
 
 .result-content {
     margin-bottom: 10px;
-    line-height: 1.5;
+    line-height: 1.6;
+    color: #ffffff;
 }
 
 /* All Notes Section Styles */
 .allNotes {
     margin-top: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-    border: 1px solid #e9ecef;
+    padding: 20px;
+    background: linear-gradient(135deg, #2c2c54 0%, #1a1a2e 100%);
+    border-radius: 12px;
+    border: 1px solid #40407a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .allNotes h3 {
-    margin: 0 0 15px 0;
-    color: #333;
-    font-size: 18px;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .notes-list {
@@ -167,19 +316,25 @@ button:hover {
 
 .note-item {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
-    background: white;
-    border-radius: 4px;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #363663 0%, #2c2c54 100%);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    border: 1px solid #40407a;
 }
 
 .note-item:hover {
-    background-color: #f0f0f0;
+    background: linear-gradient(135deg, #40407a 0%, #363663 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 210, 255, 0.2);
+    border-color: #00d2ff;
 }
 
 .note-info {
@@ -187,49 +342,86 @@ button:hover {
 }
 
 .note-name {
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 2px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+    font-size: 16px;
 }
 
 .note-timestamp {
     font-size: 12px;
-    color: #666;
+    color: #a0a0c4;
+    font-style: italic;
 }
 
 .note-actions {
     display: flex;
-    gap: 5px;
+    gap: 8px;
 }
 
 .note-btn {
-    padding: 4px 8px;
+    padding: 8px 16px;
     font-size: 12px;
     min-width: auto;
-    border-radius: 3px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.note-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.note-btn:hover::before {
+    left: 100%;
 }
 
 .view-btn {
-    background-color: #28a745;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 210, 255, 0.4);
 }
 
 .view-btn:hover {
-    background-color: #218838;
+    background: linear-gradient(135deg, #3a7bd5 0%, #00d2ff 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 210, 255, 0.6);
 }
 
 .delete-btn {
-    background-color: #dc3545;
+    background: linear-gradient(135deg, #ff416c 0%, #ff4757 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 65, 108, 0.4);
 }
 
 .delete-btn:hover {
-    background-color: #c82333;
+    background: linear-gradient(135deg, #ff4757 0%, #ff416c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 65, 108, 0.6);
 }
 
 .no-notes {
     text-align: center;
-    color: #666;
+    color: #a0a0c4;
     font-style: italic;
-    padding: 20px;
+    padding: 30px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #363663 0%, #2c2c54 100%);
+    border-radius: 12px;
+    border: 2px dashed #40407a;
 }
 
 /* Modal Styles */
@@ -241,130 +433,220 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 10% auto;
+    background: linear-gradient(135deg, #2c2c54 0%, #1a1a2e 100%);
+    margin: 5% auto;
     padding: 0;
-    border-radius: 8px;
-    width: 80%;
+    border-radius: 16px;
+    width: 90%;
     max-width: 500px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid #40407a;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    border-bottom: 1px solid #eee;
-    background-color: #f8f9fa;
-    border-radius: 8px 8px 0 0;
+    padding: 20px 25px;
+    border-bottom: 1px solid #40407a;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px 16px 0 0;
 }
 
 .modal-header h3 {
     margin: 0;
-    color: #333;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .close-btn {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    color: #999;
+    color: #ffffff;
     border: none;
     background: none;
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 50%;
 }
 
 .close-btn:hover {
-    color: #333;
+    color: #ff416c;
+    transform: rotate(90deg);
 }
 
 .modal-body {
-    padding: 20px;
+    padding: 25px;
+    background: #2c2c54;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: 500;
-    color: #333;
+    color: #ffffff;
+    font-size: 14px;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 12px 15px;
+    border: 2px solid #40407a;
+    border-radius: 8px;
     font-size: 14px;
     box-sizing: border-box;
     font-family: inherit;
+    background: #363663;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a0a0c4;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #1a73e8;
-    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+    border-color: #00d2ff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+    background: #40407a;
 }
 
 .modal-actions {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     justify-content: flex-end;
-    margin-top: 20px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #40407a;
 }
 
 .save-btn {
-    background-color: #28a745;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 12px 24px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+
+.save-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 .save-btn:hover {
-    background-color: #218838;
+    background: linear-gradient(135deg, #3a7bd5 0%, #00d2ff 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.6);
+}
+
+.save-btn:hover::before {
+    left: 100%;
 }
 
 .cancel-btn {
-    background-color: #6c757d;
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 12px 24px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
+}
+
+.cancel-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 .cancel-btn:hover {
-    background-color: #5a6268;
+    background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 117, 125, 0.6);
+}
+
+.cancel-btn:hover::before {
+    left: 100%;
 }
 
 /* Note Display Styles */
 .note-display {
-    padding: 10px;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 4px;
+    padding: 15px;
+    background: #363663;
+    border: 1px solid #40407a;
+    border-radius: 8px;
     font-size: 14px;
-    line-height: 1.5;
-    min-height: 20px;
+    line-height: 1.6;
+    min-height: 25px;
     word-wrap: break-word;
     white-space: pre-wrap;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.note-display:hover {
+    background: #40407a;
+    border-color: #00d2ff;
 }
 
 .note-display.description {
-    min-height: 60px;
+    min-height: 80px;
     max-height: 200px;
     overflow-y: auto;
 }
