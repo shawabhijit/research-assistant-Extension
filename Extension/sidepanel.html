@@ -1,30 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Research Assistant</title>
     <link rel="stylesheet" href="sidepanel.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Research Assistant</h1>
-            <div class="actions">
-                <div>
-                    <button id="summarizeBtn">Summarize</button>
+    <div class="app-container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="container">
+                <div class="header">
+                    <h1>Research Assistant</h1>
+                    <div class="actions">
+                        <div>
+                            <button id="summarizeBtn">Summarize</button>
+                        </div>
+                        <div>
+                            <button id="citationsBtn">Citations</button>
+                        </div>
+                    </div>
+                    <!-- here show all the notes name that are saved by user ie. in the users local storage -->
+                    <div class="allNotes">
+                        <h3>Saved Notes</h3>
+                        <div id="notesList" class="notes-list">
+                            <!-- Notes will be dynamically loaded here -->
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <button id="synopsisBtn">Synopesis</button>
-                </div>
-            </div>
-            <div class="notes">
-                <h3>Research Notes</h3>
-                <textarea name="" id="notes" placeholder="Take Notes here"></textarea>
-                <button id="saveNotesBtn">Save Notes</button>
+                <div id="results"></div>
             </div>
         </div>
-        <div id="results"></div>
+
+        <!-- Notes Modal -->
+        <div id="notesModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Create New Note</h3>
+                    <span class="close-btn" id="closeModal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="noteName">Note Name:</label>
+                        <input type="text" id="noteName" placeholder="Enter note name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="noteDescription">Note Description:</label>
+                        <textarea id="noteDescription" placeholder="Enter note description" rows="5"></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="saveNewNoteBtn" class="save-btn">Save Note</button>
+                        <button id="cancelNoteBtn" class="cancel-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes view -->
+        <div id="viewNoteModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="viewNoteTitle">Note Details</h3>
+                    <span class="close-btn" id="closeViewModal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Note Name:</label>
+                        <div id="viewNoteName" class="note-display"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Note Description:</label>
+                        <div id="viewNoteDescription" class="note-display"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Created:</label>
+                        <div id="viewNoteTimestamp" class="note-display"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+            <div class="sidebar-nav">
+                <button id="notesBtn" class="sidebar-btn">
+                    Take Notes
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="sidepanel.js"></script>
 </body>
+
 </html>
