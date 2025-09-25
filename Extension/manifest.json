@@ -1,0 +1,23 @@
+{
+    "name" : "Research Assistant",
+    "description" : "An AI-powered extension to assist with research tasks.",
+    "version" : "1.0",
+    "manifest_version" : 3,
+    "permissions" : ["storage", "activeTab", "scripting","sidePanel"],
+    "action" : {
+        "default_title" : "Research Assistant"
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
+    },
+    "background" : {
+        "service_worker" : "background.js"
+    },
+    "host_permissions" : [
+        "http://localhost:8080/*",
+        "<all_urls>"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';"
+    }
+}
